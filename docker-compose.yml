@@ -1,0 +1,15 @@
+version: '2.2'
+services:
+  hola:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: awssqsdemo
+    ports:
+      - 8001-8005:9090
+    networks:
+      - network1
+    scale: 3
+
+networks:
+  network1:
