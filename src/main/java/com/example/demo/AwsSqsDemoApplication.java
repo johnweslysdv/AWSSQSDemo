@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.aws.context.config.annotation.EnableContextInstanceData;
 import org.springframework.cloud.aws.messaging.config.annotation.EnableSqs;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.jms.annotation.EnableJms;
 
 @SpringBootApplication(exclude = {
 		org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration.class,
@@ -20,6 +21,7 @@ import org.springframework.context.annotation.ImportResource;
 @EnableContextInstanceData
 @ImportResource("classpath:/aws-config.xml")
 @EnableSqs
+@EnableJms
 public class AwsSqsDemoApplication {
 
 	public static void main(String[] args) {

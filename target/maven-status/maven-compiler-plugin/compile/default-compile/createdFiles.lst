@@ -1,3 +1,5 @@
 com/example/demo/SqsDemoController.class
-com/example/demo/AwsSqsDemoApplication.class
+com/example/demo/StaticDestinationResolver.class
 com/example/demo/SqsConfigurations.class
+com/example/demo/SqsJmsMessageListener.class
+com/example/demo/AwsSqsDemoApplication.class
