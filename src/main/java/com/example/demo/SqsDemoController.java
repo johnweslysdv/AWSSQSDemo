@@ -73,6 +73,7 @@ public class SqsDemoController {
 			// Send the message
 			producer.send(message);
 			System.out.println("JMS Message " + message.getJMSMessageID());
+			logger.info("JMS Message " + message.getJMSMessageID());
 			msgID = message.getJMSMessageID();
 
 		} catch (JMSException e) {
@@ -90,12 +91,12 @@ public class SqsDemoController {
 	public void receive(@Payload String message, final Acknowledgment acknowledgment,@Headers Map<String, String> header) {
 		
 		
-		System.out.println("===========================the message received" + message);
-		System.out.println("=======================the header value"+header.get("MessageId"));
-		System.out.println("=======================the header value"+header.get("ReceiptHandle"));
-		System.out.println("=======================the header value"+header.get("MD5OfMessageAttributes"));
-		System.out.println("=======================the header value"+header.get("MD5OfBody"));
-		System.out.println("=======================the header value"+header.get("Body"));
+		logger.info("===========================the message received" + message);
+		logger.info("=======================the header value"+header.get("MessageId"));
+		logger.info("=======================the header value"+header.get("ReceiptHandle"));
+		logger.info("=======================the header value"+header.get("MD5OfMessageAttributes"));
+		logger.info("=======================the header value"+header.get("MD5OfBody"));
+		logger.info("=======================the header value"+header.get("Body"));
 		
 		 // deleting message from queue after processing.
 		 acknowledgment.acknowledge();

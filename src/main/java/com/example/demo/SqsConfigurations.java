@@ -4,6 +4,8 @@ import javax.jms.ConnectionFactory;
 
 import javax.jms.JMSException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -58,6 +60,9 @@ public class SqsConfigurations {
 	 * queuMessagingTemplate = new QueueMessagingTemplate(getSqs()); return
 	 * queuMessagingTemplate; }
 	 */
+	
+	private static final Logger logger = LoggerFactory.getLogger(SqsConfigurations.class);
+
 	@Bean
 	public JmsTemplate getJmsTemplate() {
 		JmsTemplate jmsTemplate = null;
@@ -83,7 +88,7 @@ public class SqsConfigurations {
 
 	@Bean
 	AWSCredentialsProviderChain awsCredentialsProviderChain() {
-		System.out.println("===========================" + testAccessKey + " " + testSecretKey + " " + queueEndPointUri
+		logger.info("===========================" + testAccessKey + " " + testSecretKey + " " + queueEndPointUri
 				+ " " + defaultRegion);
 		return new AWSCredentialsProviderChain(
 				new AWSStaticCredentialsProvider(new BasicAWSCredentials(testAccessKey, testSecretKey)));
